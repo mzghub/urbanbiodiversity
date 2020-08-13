@@ -98,3 +98,9 @@ ab_m <- lmer(sqrt(RescaledAbundance) ~ LandUse + (1|SS) + (1|SSB), data = abunda
 summary("ab_m")
 
 
+# Install package vegan for Simpson's diversity calculation
+install.packages("vegan")
+
+# Read more about the functions in Package vegan
+browseVignettes("vegan")
+
