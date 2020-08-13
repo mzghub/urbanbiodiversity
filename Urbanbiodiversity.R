@@ -104,3 +104,17 @@ install.packages("vegan")
 # Read more about the functions in Package vegan
 browseVignettes("vegan")
 
+# Using the newly developed diversity function in vegan to process the Simpson's index, avoid the overlapping names of diversity function and diversity.rds 
+data("diversity")
+
+H <- vegan::diversity(diversity)
+simp <- diversity(diversity, "simpson")
+invsimp <- vegan::diversity(diversity, "inv")
+r.2 <- rarefy(diversity, 2)
+alpha <- fisher.alpha(diversity)
+pairs(cbind(H, simp, invsimp, r.2, alpha), pch="+", col="blue")
+
+# Species richness (S) and Pielou's evenness (J):
+S <- specnumber(diversity) 
+# rowSums(diversity > 0) does the same...
+J <- H/log(S)
